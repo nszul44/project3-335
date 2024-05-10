@@ -1,5 +1,5 @@
 #include "QuickSelect1.hpp"
-#include "InsertionSort.hpp"
+#include "insertionSort.hpp"
 /**
  * @file QuickSelect1.cpp
  * @author Nicholas Szul
@@ -69,12 +69,13 @@ void quickSelect1(const std::string &header, std::vector<int> data){
     quickSelect(data, (data.size()/2), data.size(), (data.size()/4) * 3);
     int minimum = data.front();
     int maximum = data[((data.size()/4) * 3)];
-    for (int i = 1; i < (data.size()/4) - 1; ++i) {
+    for (int i = 0; i < (data.size()/4) - 1; ++i) {
          minimum = std::min(minimum, data[i]);
     }
-    for (int i = ((data.size()/4) * 3) + 1; i < data.size(); ++i) {
+    for (int i = ((data.size()/4) * 3); i < data.size(); ++i) {
          maximum = std::max(maximum, data[i]);
     }
+    std::cout << header << "\n";
     std::cout << "Min: " << minimum << "\n";
     std::cout << "P25: " << data[(data.size()/4)-1] << "\n";
     std::cout << "P50: " << data[(data.size()/2)-1] << "\n";

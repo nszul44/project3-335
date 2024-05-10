@@ -81,10 +81,10 @@ void quickSelect2(const std::string &header, std::vector<int> data)
    keys.push_back((data.size()/4) * 3);
    keys.push_back(data.size());
    quickSelect2(data, 0, data.size(), keys);
-   std::cout << header << "\n";
-   std::cout << "Min: " << data[0] << "\n";
-   std::cout << "P25: " << data[(data.size()/4)-1] << "\n";
-   std::cout << "P50: " << data[(data.size()/2)-1] << "\n";
-   std::cout << "P75: " << data[((data.size()/4)*3)-1] << "\n";
-   std::cout << "Max: " << data[data.size()-1]<< "\n";
+    std::cout << header << "\n";
+    std::cout << "Min: " << data.front() << "\n";
+    std::cout << "P25: " << data[((data.size()/4) - 1)] << "\n";
+    std::cout << "P50: " << data[((data.size()/2) - 1)] << "\n";
+    std::cout << "P75: " << data[(((data.size()/4) * 3) - 1)] << "\n";
+    std::cout << "Max: " << data.back() << "\n";
 }

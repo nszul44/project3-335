@@ -16,5 +16,6 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
-
+const int & median32( std::vector<int> & a, int left, int right );
+void quickSelect2( std::vector<int> & a, int left, int right, std::vector<int> & keys );
 void quickSelect2(const std::string & header, std::vector<int> data);

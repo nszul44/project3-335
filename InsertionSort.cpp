@@ -1,5 +1,5 @@
 #include "InsertionSort.hpp"
-void insertionSort( std::vector<int> & a,  const int  & left,  const int & right)
+void insertionSort( std::vector<int> & a,  const int left,  const int right)
  {
  for( int p = left + 1; p < right; ++p )
  {

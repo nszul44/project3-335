@@ -22,5 +22,5 @@
  * Simple insertion sort.
  */
  
- void insertionSort( std::vector<int> & a,  const int  & left,  const int & right);
+ void insertionSort( std::vector<int> & a,  const int left,  const int right);
  

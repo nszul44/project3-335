@@ -1,5 +1,4 @@
 #include "QuickSelect1.hpp"
-#include "insertionSort.hpp"
 /**
  * @file QuickSelect1.cpp
  * @author Nicholas Szul
@@ -15,7 +14,18 @@
  * Return median of left, center, and right.
  * Order these and hide the pivot.
  */
- 
+ void insertionSort1( std::vector<int> & a,  const int left,  const int right)
+ {
+ for( int p = left + 1; p < right; ++p )
+ {
+ int tmp = std::move( a[ p ] );
+
+ int j;
+ for( j = p; j > left && tmp < a[ j - 1 ]; --j )
+ a[ j ] = std::move( a[ j - 1 ] );
+ a[ j ] = std::move( tmp );
+ }
+ }
  const int & median3( std::vector<int> & a, int left, int right )
  {
  int center = ( left + right ) / 2;
@@ -59,7 +69,7 @@
  quickSelect( a, i + 1, right, k );
  }
  else // Do an insertion sort on the subarray
- insertionSort(a, left, right);
+ insertionSort1(a, left, right);
 }
 
 void quickSelect1(const std::string &header, std::vector<int> data){

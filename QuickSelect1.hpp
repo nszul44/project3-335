@@ -17,7 +17,11 @@
 #include <sstream>
 
 
+ 
+void insertionSort1( std::vector<int> & a,  const int left,  const int right);
+ 
+const int & median3( std::vector<int> & a, int left, int right );
 
-
+void quickSelect( std::vector<int> & a, int left, int right, int k );
 
 void quickSelect1 (const std::string & header, std::vector<int> data);

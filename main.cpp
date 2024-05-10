@@ -16,6 +16,8 @@
 #include <fstream>
 #include <sstream>
 #include "StdSort.hpp"
+#include "QuickSelect1.hpp"
+#include "QuickSelect2.hpp"
 /**
  * @brief converts a txt file to an accesible vector 
  * 
@@ -41,7 +43,8 @@ int main(){
         data.push_back(data_int);
         count++;
     }
-   
     stdSort(header, data);
+    quickSelect1(header, data);
+    quickSelect2(header, data);
 }
 

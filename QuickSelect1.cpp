@@ -75,7 +75,6 @@ void quickSelect1(const std::string &header, std::vector<int> data){
     for (int i = ((data.size()/4) * 3); i < data.size(); ++i) {
          maximum = std::max(maximum, data[i]);
     }
-    std::cout << header << "\n";
     std::cout << "Min: " << minimum << "\n";
     std::cout << "P25: " << data[(data.size()/4)-1] << "\n";
     std::cout << "P50: " << data[(data.size()/2)-1] << "\n";

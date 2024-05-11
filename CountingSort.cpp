@@ -30,6 +30,7 @@ void countingSort(const std::string &header, std::vector<int> data){
     }
     std::sort(pairs.begin(), pairs.end());
     for(auto it = pairs.begin(); it != pairs.end(); ++it){
+        unique++;
         count += it->second;
         if(count - it->second < (data.size()/4) && count >= (data.size()/4) - 1){
             p25 = it->first;
@@ -39,9 +40,6 @@ void countingSort(const std::string &header, std::vector<int> data){
         }
         else if(count - it->second < (data.size()/4) * 3 && count >= (data.size()/4) * 3){
             p75 = it->first;
-        }
-        if(it->second == 1){
-            unique++;
         }
      }
      std::cout << header << "\n";

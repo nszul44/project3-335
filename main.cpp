@@ -18,6 +18,7 @@
 #include "StdSort.hpp"
 #include "QuickSelect1.hpp"
 #include "QuickSelect2.hpp"
+#include "CountingSort.hpp"
 /**
  * @brief converts a txt file to an accesible vector 
  * 
@@ -26,7 +27,7 @@
  */
 int main(){
     std::ifstream inputfile;
-    inputfile.open("testinput.txt"); 
+    inputfile.open("testinput3.txt"); 
     std::string data_string, header;
     std::vector<int> data;
     std::getline(inputfile, header);
@@ -46,5 +47,5 @@ int main(){
     stdSort(header, data);
     quickSelect1(header, data);
     quickSelect2(header, data);
+    countingSort(header, data);
 }
-

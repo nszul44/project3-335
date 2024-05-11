@@ -10,11 +10,9 @@
  * @copyright Copyright (c) 2024
  *
  */
-
- /**
- * Return median of left, center, and right.
- * Order these and hide the pivot.
- */
+/**
+ * Simple insertion sort.
+*/
 void insertionSort2( std::vector<int> & a,  const int left,  const int right)
  {
  for( int p = left + 1; p < right; ++p )
@@ -27,7 +25,10 @@ void insertionSort2( std::vector<int> & a,  const int left,  const int right)
  a[ j ] = std::move( tmp );
  }
  }
-
+ /**
+ * Return median of left, center, and right.
+ * Order these and hide the pivot.
+ */
 const int & median32( std::vector<int> & a, int left, int right )
  {
  int center = ( left + right ) / 2;
@@ -83,16 +84,24 @@ for (auto it = keys.begin(); it!= keys.end(); ++it) {
  else // Do an insertion sort on the subarray
  insertionSort2(a, left, right);
 }
-
+/**
+ * @brief Creates the vector of keys and calls quickselect once
+ * 
+ * @param header 
+ * @param data 
+ */
 void quickSelect2(const std::string &header, std::vector<int> data)
 {
+   const auto t1_start = std::chrono::steady_clock::now();
    std::vector<int> keys;
-   keys.push_back(1);
+   keys.push_back(1);         //insert the proper keys into the vector
    keys.push_back((data.size()/4));
    keys.push_back((data.size()/2));
    keys.push_back((data.size()/4) * 3);
    keys.push_back(data.size());
    quickSelect2(data, 0, data.size(), keys);
+   const auto t1_end = std::chrono::steady_clock::now();
+  int t1 = std::chrono::duration <double, std::micro> (t1_end - t1_start).count();
     std::cout << header << "\n";
     std::cout << "Min: " << data.front() << "\n";
     std::cout << "P25: " << data[((data.size()/4) - 1)] << "\n";

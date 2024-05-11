@@ -18,6 +18,7 @@
 #include <algorithm>
 #include <unordered_map>
 #include <utility>
+#include <chrono>
 /**
  * @brief Output the box plot using countingsort
  * 

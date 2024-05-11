@@ -11,8 +11,7 @@
  */
 
  /**
- * Return median of left, center, and right.
- * Order these and hide the pivot.
+ * Simple insertion sort.
  */
  void insertionSort1( std::vector<int> & a,  const int left,  const int right)
  {
@@ -26,6 +25,10 @@
  a[ j ] = std::move( tmp );
  }
  }
+ /**
+ * Return median of left, center, and right.
+ * Order these and hide the pivot.
+ */
  const int & median3( std::vector<int> & a, int left, int right )
  {
  int center = ( left + right ) / 2;
@@ -41,7 +44,15 @@
  std::swap( a[ center ], a[ right - 1 ] );
  return a[ right - 1 ];
 }
-
+ /*
+ * Internal selection method that makes recursive calls.
+ * Uses median-of-three partitioning and a cutoff of 10.
+ * Places the kth smallest item in a[k-1].
+ * a is an array of Comparable items.
+ * left is the left-most index of the subarray.
+ * right is the right-most index of the subarray.
+ * k is the desired rank (1 is minimum) in the entire array.
+ */
  void quickSelect( std::vector<int> & a, int left, int right, int k )
  {
  if( left + 20 <= right )
@@ -71,20 +82,27 @@
  else // Do an insertion sort on the subarray
  insertionSort1(a, left, right);
 }
-
+/**
+ * @brief calls quickselect 3 times for p25, p50, p75
+ * 
+ * @param header 
+ * @param data 
+ */
 void quickSelect1(const std::string &header, std::vector<int> data){
-    
-    quickSelect(data, 0, data.size(), (data.size()/2));
-    quickSelect(data, 0, (data.size()/2) - 1, (data.size()/4));
-    quickSelect(data, (data.size()/2), data.size(), (data.size()/4) * 3);
+    const auto t1_start = std::chrono::steady_clock::now();
+    quickSelect(data, 0, data.size(), (data.size()/2));   //call for p50
+    quickSelect(data, 0, (data.size()/2) - 1, (data.size()/4)); //call for p25
+    quickSelect(data, (data.size()/2), data.size(), (data.size()/4) * 3); //call for p75
     int minimum = data.front();
     int maximum = data[((data.size()/4) * 3)];
-    for (int i = 0; i < (data.size()/4) - 1; ++i) {
+    for (int i = 0; i < (data.size()/4) - 1; ++i) {   //loop to find the min
          minimum = std::min(minimum, data[i]);
     }
-    for (int i = ((data.size()/4) * 3); i < data.size(); ++i) {
+    for (int i = ((data.size()/4) * 3); i < data.size(); ++i) { //loop to find the max
          maximum = std::max(maximum, data[i]);
     }
+    const auto t1_end = std::chrono::steady_clock::now();
+  int t1 = std::chrono::duration <double, std::micro> (t1_end - t1_start).count();
     std::cout << header << "\n";
     std::cout << "Min: " << minimum << "\n";
     std::cout << "P25: " << data[(data.size()/4)-1] << "\n";
